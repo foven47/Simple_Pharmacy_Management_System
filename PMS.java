@@ -34,11 +34,11 @@ public class PMS extends JFrame implements ActionListener {
 
 
     PMS(){
-        bishwambar ();
+        pranto ();
     }
 
 
-    public void bishwambar(){
+    public void pranto(){
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(780, 690);
