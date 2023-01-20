@@ -1,13 +1,6 @@
 package pharmecy.ms;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Container;
 import java.awt.Font;
@@ -21,14 +14,15 @@ public class PMS extends JFrame implements ActionListener {
 
     private Container c;
     private JLabel titleLable,mnLabel,cnLabel,expLabel,stockLable,priceLabel;
-    private JTextField mnTf,cnTf,expTf,stockTf,priceTf;
+    private JTextField mnTf,cnTf,expTf,priceTf;
+    protected JSpinner stockTf;
     private JButton addButton,updateButton,deleteButton,clearButton;
     private ImageIcon aimg, uimg, dimg, cimg;
     private JTable table;
     private JScrollPane scroll;
     private DefaultTableModel model;
     private String[] colums = {"Medicine Name","Company Name","EXP Date","Stock Amount","Price"};
-    private String[] rows = new String[5];
+    private Object[] rows = new Object[5];
 
 
 
@@ -91,7 +85,7 @@ public class PMS extends JFrame implements ActionListener {
         stockLable.setBounds(10,230,150,30);
         c.add(stockLable);
 
-        stockTf = new JTextField();
+        stockTf = new JSpinner();
         stockTf.setFont(font);
         stockTf.setBounds(180,230,200,30);
         c.add(stockTf);
@@ -160,24 +154,18 @@ public class PMS extends JFrame implements ActionListener {
 
                 int numberOfROW  = table.getSelectedRow();
 
-                String m_name = model.getValueAt(numberOfROW, 0).toString();
-                String c_name = model.getValueAt(numberOfROW, 1).toString();
-                String expdate = model.getValueAt(numberOfROW, 2).toString();
-                String stock = model.getValueAt(numberOfROW, 3).toString();
-                String price = model.getValueAt(numberOfROW, 4).toString();
-
-                mnTf.setText(m_name);
-                cnTf.setText(c_name);
-                expTf.setText(expdate);
-                stockTf.setText(stock);
-                priceTf.setText(price);
+                mnTf.setText(model.getValueAt(numberOfROW, 0).toString());
+                cnTf.setText(model.getValueAt(numberOfROW, 1).toString());
+                expTf.setText(model.getValueAt(numberOfROW, 2).toString());
+                stockTf.setValue(model.getValueAt(numberOfROW, 3));
+                priceTf.setText(model.getValueAt(numberOfROW, 4).toString());
 
             }
         });
         this.setVisible(true);
     }
 
-     @Override
+    @Override
     public void actionPerformed(ActionEvent e) {
 
 
@@ -186,7 +174,7 @@ public class PMS extends JFrame implements ActionListener {
             rows[0] = mnTf.getText();
             rows[1] = cnTf.getText();
             rows[2] = expTf.getText();
-            rows[3] = stockTf.getText();
+            rows[3] = stockTf.getValue();
             rows[4] = priceTf.getText();
 
             model.addRow(rows);
@@ -195,24 +183,24 @@ public class PMS extends JFrame implements ActionListener {
 
         else if(e.getSource()==clearButton){
 
-                mnTf.setText("");
-                cnTf.setText("");
-                expTf.setText("");
-                stockTf.setText("");
-                priceTf.setText("");
+            mnTf.setText("");
+            cnTf.setText("");
+            expTf.setText("");
+            stockTf.setValue(0);
+            priceTf.setText("");
 
         }
 
         else if(e.getSource()==deleteButton){
 
-                int numberOfROW =  table.getSelectedRow();
+            int numberOfROW =  table.getSelectedRow();
 
-                if(numberOfROW >= 0){
-                    model.removeRow(numberOfROW);
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "nothig select");
-                }
+            if(numberOfROW >= 0){
+                model.removeRow(numberOfROW);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "nothig select");
+            }
 
         }
 
@@ -223,13 +211,12 @@ public class PMS extends JFrame implements ActionListener {
             String m_name = mnTf.getText();
             String c_name = cnTf.getText();
             String exp = expTf.getText();
-            String stock = stockTf.getText();
             String price = priceTf.getText();
 
             model.setValueAt(m_name,numberOfROW,0);
             model.setValueAt(c_name,numberOfROW,1);
             model.setValueAt(exp,numberOfROW,2);
-            model.setValueAt(stock,numberOfROW,3);
+            model.setValueAt(stockTf.getValue(),numberOfROW,3);
             model.setValueAt(price,numberOfROW,4);
 
 
