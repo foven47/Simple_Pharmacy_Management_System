@@ -174,7 +174,7 @@ public class PMS extends JFrame implements ActionListener {
 
             }
         });
-
+        this.setVisible(true);
     }
 
      @Override
