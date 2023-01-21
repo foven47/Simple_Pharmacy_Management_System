@@ -12,7 +12,11 @@
       <change beforePath="$PROJECT_DIR$/PMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PMS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simple-Pharmecy-Management-System-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simple-Pharmecy-Management-System-main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simple_Pharmacy_Management_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simple_Pharmacy_Management_System.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple-Pharmecy-Management-System-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple-Pharmecy-Management-System-main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple_Pharmacy_Management_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple_Pharmacy_Management_System.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,16 +42,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Simple_Pharmacy_Management_System&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Simple_Pharmacy_Management_System",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pharmecy.ms.Main" />

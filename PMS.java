@@ -7,10 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -57,6 +54,7 @@ public class PMS extends JFrame implements ActionListener {
         c.setBackground(Color.PINK);
 
         Font font = new Font("Arial",Font.BOLD,16);
+        Font font1 = new Font("Lato", Font.PLAIN, 16);
 
         titleLable = new JLabel("MEDICINE DETAILS");
         titleLable.setFont(font);
@@ -80,9 +78,27 @@ public class PMS extends JFrame implements ActionListener {
         c.add(cnLabel);
 
         cnTf = new JTextField();
-        cnTf.setFont(font);
+        cnTf.setText("Enter company name");
+        cnTf.setForeground(Color.GRAY);
+        cnTf.setFont(font1);
         cnTf.setBounds(550,80,200,30);
         c.add(cnTf);
+
+        cnTf.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                if (cnTf.getText().equals("Enter company name")) {
+                    cnTf.setText("");
+                    cnTf.setForeground(Color.BLACK);
+                    cnTf.setFont(font);
+                }
+            }
+            public void focusLost(FocusEvent e) {
+                if (cnTf.getText().isEmpty()) {
+                    cnTf.setText("Enter company name");
+                    cnTf.setForeground(Color.GRAY);
+                }
+            }
+        });
 
         expLabel = new JLabel("EXP Date");
         expLabel.setFont(font);
