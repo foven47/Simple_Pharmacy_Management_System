@@ -15,6 +15,7 @@ import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -179,10 +180,26 @@ public class PMS extends JFrame implements ActionListener {
             }
         });
         this.setVisible(true);
+
+        // Create a button to open frame2
+        JButton buttonChartFrame = new JButton("Open Bar Chart");
+        buttonChartFrame.setBounds(10,10,120,35);
+        buttonChartFrame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openFrame2();
+            }
+        });
+        add(buttonChartFrame);
+
     }
 
+    ArrayList<String> medName = new ArrayList<>();
+    ArrayList<Integer> medStock = new ArrayList<>();
+    int barTotal = 0;
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        boolean found = false;
 
         if(e.getSource()==addButton) {
 
@@ -204,6 +221,23 @@ public class PMS extends JFrame implements ActionListener {
                 rows[4] = priceTf.getValue();
 
                 model.addRow(rows);
+
+                // if same medicine, total with current stock
+                for (int i = 0; i < medName.size(); i++) {
+                    if (medName.get(i).equals((String) rows[0])) {
+                        System.out.println("Same Name");
+                        int currentValue = medStock.get(i);
+                        medStock.set(i, currentValue + (Integer) rows[3]);
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == false) {
+                    medName.add((String) rows[0]);
+                    medStock.add((Integer) rows[3]);
+                    barTotal++;
+                }
+
             }
 
         }
@@ -221,6 +255,21 @@ public class PMS extends JFrame implements ActionListener {
             int numberOfROW =  table.getSelectedRow();
 
             if(numberOfROW >= 0){
+
+                Object selectedName = model.getValueAt(numberOfROW, 0);
+                int selectedValue = (Integer) model.getValueAt(numberOfROW, 3);
+
+                for (int i = 0; i < medName.size(); i++) {
+                    if (medName.get(i).equals(selectedName)) {
+                        medStock.set(i, medStock.get(i) - selectedValue);
+                        if (medStock.get(i) == 0) {
+                            medStock.remove(i);
+                            medName.remove(i);
+                            barTotal--;
+                        }
+                    }
+                }
+
                 model.removeRow(numberOfROW);
             }
             else {
@@ -231,6 +280,36 @@ public class PMS extends JFrame implements ActionListener {
         else if(e.getSource()==updateButton){
 
             int numberOfROW = table.getSelectedRow();
+
+            Object selectedName = model.getValueAt(numberOfROW, 0);
+            int selectedValue = (Integer) model.getValueAt(numberOfROW, 3);
+
+            //when user change selected name,
+            if ( (selectedName != mnTf.getSelectedItem()) || (selectedValue != (Integer) stockTf.getValue()) ) {
+                for (int i = 0; i < medName.size(); i++) {
+                    if(selectedName==medName.get(i)){
+                        medStock.set(i, medStock.get(i)-selectedValue);
+                        if(medStock.get(i)==0){
+                            medStock.remove(i);
+                            medName.remove(i);
+                            barTotal--;
+                        }
+                        for (int j = 0; j < medName.size(); j++) {
+                            if(medName.get(j)==mnTf.getSelectedItem()){ //total selected stock with stock changed
+                                medStock.set(j, medStock.get(j)+(Integer) stockTf.getValue());
+                                found=true;
+                            }
+                        }
+                        if(found==false){
+                            medName.add((String) mnTf.getSelectedItem());
+                            medStock.add((Integer) stockTf.getValue());
+                            barTotal++;
+                        }
+                    }
+                }
+            }
+
+
             LocalDate date = expTf.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
             if (expTf.getDate() == null ) {
@@ -253,5 +332,22 @@ public class PMS extends JFrame implements ActionListener {
         }
 
     }
+    private void openFrame2() {
+        // Initialize frame2
+        JFrame frame2 = new JFrame();
+        frame2.setTitle("frame2");
+        frame2.setSize(680, 590);
+        frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame2.setVisible(true);
+        frame2.setLayout(null);
+        frame2.setBackground(Color.white);
 
+        for (int i = 0, boundValX = 20; i < barTotal; i++, boundValX += 70) {
+            JPanel newPanel = new JPanel();
+            newPanel.setBackground(Color.WHITE);
+            int boundValY = medStock.get(i) * 10;
+            newPanel.setBounds(boundValX, 20, 50, boundValY);
+            frame2.add(newPanel);
+        }
+    }
 }
