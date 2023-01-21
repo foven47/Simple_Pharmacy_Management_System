@@ -9,12 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
 
 public class PMS extends JFrame implements ActionListener {
 
     private Container c;
     private JLabel titleLable,mnLabel,cnLabel,expLabel,stockLable,priceLabel;
-    private JTextField mnTf,cnTf,expTf,priceTf;
+    protected JComboBox<String> mnTf;
+    private JTextField cnTf,expTf;
+    protected JSpinner priceTf;
     protected JSpinner stockTf;
     private JButton addButton,updateButton,deleteButton,clearButton;
     private ImageIcon aimg, uimg, dimg, cimg;
@@ -23,9 +26,9 @@ public class PMS extends JFrame implements ActionListener {
     private DefaultTableModel model;
     private String[] colums = {"Medicine Name","Company Name","EXP Date","Stock Amount","Price"};
     private Object[] rows = new Object[5];
-
-
-
+    protected SpinnerNumberModel numberModel = new SpinnerNumberModel(0.00, 0.00, 10000.0, 1.00);
+    protected JSpinner.NumberEditor editor;
+    protected NumberFormat format;
 
     PMS(){
         pranto ();
@@ -55,7 +58,8 @@ public class PMS extends JFrame implements ActionListener {
         mnLabel.setBounds(10,80,140,30);
         c.add(mnLabel);
 
-        mnTf = new JTextField();
+        String[] medical ={"Aspirin","Paracetamol","Ibuprofen","Amoxicillin","Metformin", "Lisinopril", "Simvastatin", "Levothyroxine", "Alprazolam", "Omeprazole"};
+        mnTf = new JComboBox<>(medical);
         mnTf.setFont(font);
         mnTf.setBounds(180,80,200,30);
         c.add(mnTf);
@@ -95,7 +99,11 @@ public class PMS extends JFrame implements ActionListener {
         priceLabel.setBounds(10,280,180,30);
         c.add(priceLabel);
 
-        priceTf = new JTextField();
+        priceTf = new JSpinner(numberModel);
+        editor = (JSpinner.NumberEditor)priceTf.getEditor();
+        format = editor.getFormat();
+        format.setMinimumFractionDigits(2);
+        format.setMaximumFractionDigits(2);
         priceTf.setFont(font);
         priceTf.setBounds(180,280,200,30);
         c.add(priceTf);
@@ -126,10 +134,7 @@ public class PMS extends JFrame implements ActionListener {
         clearButton.setBounds(400,230,120,35);
         c.add(clearButton);
 
-
-
         table = new JTable();
-
 
         model = new DefaultTableModel();
         model.setColumnIdentifiers(colums);
@@ -154,11 +159,11 @@ public class PMS extends JFrame implements ActionListener {
 
                 int numberOfROW  = table.getSelectedRow();
 
-                mnTf.setText(model.getValueAt(numberOfROW, 0).toString());
+                mnTf.setSelectedItem(model.getValueAt(numberOfROW, 0).toString());
                 cnTf.setText(model.getValueAt(numberOfROW, 1).toString());
                 expTf.setText(model.getValueAt(numberOfROW, 2).toString());
                 stockTf.setValue(model.getValueAt(numberOfROW, 3));
-                priceTf.setText(model.getValueAt(numberOfROW, 4).toString());
+                priceTf.setValue(model.getValueAt(numberOfROW, 4));
 
             }
         });
@@ -168,29 +173,26 @@ public class PMS extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
         if(e.getSource()==addButton) {
 
-            rows[0] = mnTf.getText();
+            rows[0] = mnTf.getSelectedItem();
             rows[1] = cnTf.getText();
             rows[2] = expTf.getText();
             rows[3] = stockTf.getValue();
-            rows[4] = priceTf.getText();
+            rows[4] = priceTf.getValue();
 
             model.addRow(rows);
 
         }
-
         else if(e.getSource()==clearButton){
 
-            mnTf.setText("");
+            mnTf.setSelectedItem("");
             cnTf.setText("");
             expTf.setText("");
             stockTf.setValue(0);
-            priceTf.setText("");
+            priceTf.setValue(0);
 
         }
-
         else if(e.getSource()==deleteButton){
 
             int numberOfROW =  table.getSelectedRow();
@@ -203,27 +205,21 @@ public class PMS extends JFrame implements ActionListener {
             }
 
         }
-
         else if(e.getSource()==updateButton){
 
             int numberOfROW = table.getSelectedRow();
 
-            String m_name = mnTf.getText();
             String c_name = cnTf.getText();
             String exp = expTf.getText();
-            String price = priceTf.getText();
 
-            model.setValueAt(m_name,numberOfROW,0);
+            model.setValueAt(mnTf.getSelectedItem(),numberOfROW,0);
             model.setValueAt(c_name,numberOfROW,1);
             model.setValueAt(exp,numberOfROW,2);
             model.setValueAt(stockTf.getValue(),numberOfROW,3);
-            model.setValueAt(price,numberOfROW,4);
-
-
+            model.setValueAt(priceTf.getValue(),numberOfROW,4);
 
         }
 
     }
-
 
 }

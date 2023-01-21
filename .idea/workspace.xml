@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="447b295e-8227-4361-bf30-1d23d17db1bb" name="Changes" comment="" />
+    <list default="true" id="447b295e-8227-4361-bf30-1d23d17db1bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simple-Pharmecy-Management-System-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simple-Pharmecy-Management-System-main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simple_Pharmacy_Management_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simple_Pharmacy_Management_System.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple-Pharmecy-Management-System-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple-Pharmecy-Management-System-main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple_Pharmacy_Management_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple_Pharmacy_Management_System.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,9 +44,30 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Simple_Pharmacy_Management_System"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pharmecy.ms.Main" />
+      <module name="Simple_Pharmacy_Management_System" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pharmecy.ms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
