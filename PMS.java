@@ -55,6 +55,7 @@ public class PMS extends JFrame implements ActionListener {
 
         Font font = new Font("Arial",Font.BOLD,16);
         Font font1 = new Font("Lato", Font.PLAIN, 16);
+        Font numberFont = new Font("Digit-only", Font.PLAIN, 16);
 
         titleLable = new JLabel("MEDICINE DETAILS");
         titleLable.setFont(font);
@@ -80,6 +81,7 @@ public class PMS extends JFrame implements ActionListener {
         cnTf = new JTextField();
         cnTf.setText("Enter company name");
         cnTf.setForeground(Color.GRAY);
+        cnTf.setToolTipText("Enter company name");
         cnTf.setFont(font1);
         cnTf.setBounds(550,80,200,30);
         c.add(cnTf);
@@ -116,7 +118,8 @@ public class PMS extends JFrame implements ActionListener {
         c.add(stockLable);
 
         stockTf = new JSpinner(stockModel);
-        stockTf.setFont(font);
+        stockTf.setToolTipText("Enter stock amount");
+        stockTf.setFont(numberFont);
         stockTf.setBounds(550,130,200,30);
         c.add(stockTf);
 
@@ -130,7 +133,8 @@ public class PMS extends JFrame implements ActionListener {
         format = editor.getFormat();
         format.setMinimumFractionDigits(2);
         format.setMaximumFractionDigits(2);
-        priceTf.setFont(font);
+        priceTf.setToolTipText("Enter medicine price");
+        priceTf.setFont(numberFont);
         priceTf.setBounds(170,180,200,30);
         c.add(priceTf);
 
@@ -217,6 +221,7 @@ public class PMS extends JFrame implements ActionListener {
 
         boolean found = false;
 
+        if(Objects.equals(cnTf.getText(), "Enter company name")){ cnTf.setText("");}
         if(e.getSource()==addButton) {
 
             if (expTf.getDate() == null ) {
@@ -225,6 +230,7 @@ public class PMS extends JFrame implements ActionListener {
             } else if (Objects.equals(cnTf.getText(), "")) {
                 ErrorM errorM = new ErrorM();
                 errorM.displayError("You must input your company name");
+                if(Objects.equals(cnTf.getText(), "")){ cnTf.setText("Enter company name");}
             } else if (Objects.equals(priceTf.getValue(), 0.0)) {
                 ErrorM errorM = new ErrorM();
                 errorM.displayError("You must input the price of medicine");
