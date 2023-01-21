@@ -55,9 +55,9 @@ public class PMS extends JFrame implements ActionListener {
 
         Font font = new Font("Arial",Font.BOLD,16);
 
-        titleLable = new JLabel("Medicine Details");
+        titleLable = new JLabel("MEDICINE DETAILS");
         titleLable.setFont(font);
-        titleLable.setBounds(140,10,250,50);
+        titleLable.setBounds(310,10,250,50);
         c.add(titleLable);
 
         mnLabel = new JLabel("Medicine Name");
@@ -68,42 +68,42 @@ public class PMS extends JFrame implements ActionListener {
         String[] medical ={"Aspirin","Paracetamol","Ibuprofen","Amoxicillin","Metformin", "Lisinopril", "Simvastatin", "Levothyroxine", "Alprazolam", "Omeprazole"};
         mnTf = new JComboBox<>(medical);
         mnTf.setFont(font);
-        mnTf.setBounds(180,80,200,30);
+        mnTf.setBounds(170,80,200,30);
         c.add(mnTf);
 
         cnLabel = new JLabel("Company Name");
         cnLabel.setFont(font);
-        cnLabel.setBounds(10,130,150,30);
+        cnLabel.setBounds(390,80,150,30);
         c.add(cnLabel);
 
         cnTf = new JTextField();
         cnTf.setFont(font);
-        cnTf.setBounds(180,130,200,30);
+        cnTf.setBounds(550,80,200,30);
         c.add(cnTf);
 
         expLabel = new JLabel("EXP Date");
         expLabel.setFont(font);
-        expLabel.setBounds(10,180,150,30);
+        expLabel.setBounds(10,130,150,30);
         c.add(expLabel);
 
         expTf = new JDateChooser();
         expTf.setFont(font);
-        expTf.setBounds(180,180,200,30);
+        expTf.setBounds(170,130,200,30);
         c.add(expTf);
 
         stockLable = new JLabel("Stock Amount");
         stockLable.setFont(font);
-        stockLable.setBounds(10,230,150,30);
+        stockLable.setBounds(390,130,150,30);
         c.add(stockLable);
 
         stockTf = new JSpinner();
         stockTf.setFont(font);
-        stockTf.setBounds(180,230,200,30);
+        stockTf.setBounds(550,130,200,30);
         c.add(stockTf);
 
         priceLabel = new JLabel("Price of Medicine");
         priceLabel.setFont(font);
-        priceLabel.setBounds(10,280,180,30);
+        priceLabel.setBounds(10,180,180,30);
         c.add(priceLabel);
 
         priceTf = new JSpinner(numberModel);
@@ -112,7 +112,7 @@ public class PMS extends JFrame implements ActionListener {
         format.setMinimumFractionDigits(2);
         format.setMaximumFractionDigits(2);
         priceTf.setFont(font);
-        priceTf.setBounds(180,280,200,30);
+        priceTf.setBounds(170,180,200,30);
         c.add(priceTf);
 
 
@@ -123,22 +123,22 @@ public class PMS extends JFrame implements ActionListener {
 
         addButton = new JButton(aimg);
         addButton.setFont(font);
-        addButton.setBounds(400,80,120,35);
+        addButton.setBounds(50,260,120,35);
         c.add(addButton);
 
         updateButton = new JButton(uimg);
         updateButton.setFont(font);
-        updateButton.setBounds(400,130,120,35);
+        updateButton.setBounds(225,260,120,35);
         c.add(updateButton);
 
         deleteButton = new JButton(dimg);
         deleteButton.setFont(font);
-        deleteButton.setBounds(400,180,120,35);
+        deleteButton.setBounds(400,260,120,35);
         c.add(deleteButton);
 
         clearButton = new JButton(cimg);
         clearButton.setFont(font);
-        clearButton.setBounds(400,230,120,35);
+        clearButton.setBounds(575,260,120,35);
         c.add(clearButton);
 
         table = new JTable();
