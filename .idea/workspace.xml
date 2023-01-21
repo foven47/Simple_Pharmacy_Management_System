@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="447b295e-8227-4361-bf30-1d23d17db1bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ErrorM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
@@ -15,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/PMS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/PMS.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple-Pharmecy-Management-System-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple-Pharmecy-Management-System-main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple_Pharmacy_Management_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simple_Pharmacy_Management_System/pharmecy/ms/Simple_Pharmacy_Management_System.iml" afterDir="false" />
     </list>
@@ -45,7 +47,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/User/Desktop/Simple_Pharmacy_Management_System/jcalendar-1.4.jar",
+    "last_opened_file_path": "C:/Users/User/Desktop/Simple_Pharmacy_Management_System",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"

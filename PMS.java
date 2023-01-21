@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Objects;
 
 public class PMS extends JFrame implements ActionListener {
 
@@ -34,6 +35,7 @@ public class PMS extends JFrame implements ActionListener {
     private String[] colums = {"Medicine Name","Company Name","EXP Date","Stock Amount","Price"};
     private Object[] rows = new Object[5];
     protected SpinnerNumberModel numberModel = new SpinnerNumberModel(0.00, 0.00, 10000.0, 1.00);
+    protected SpinnerNumberModel stockModel = new SpinnerNumberModel(1, 1, 10000, 1);
     protected JSpinner.NumberEditor editor;
     protected NumberFormat format;
 
@@ -96,7 +98,7 @@ public class PMS extends JFrame implements ActionListener {
         stockLable.setBounds(390,130,150,30);
         c.add(stockLable);
 
-        stockTf = new JSpinner();
+        stockTf = new JSpinner(stockModel);
         stockTf.setFont(font);
         stockTf.setBounds(550,130,200,30);
         c.add(stockTf);
@@ -182,16 +184,27 @@ public class PMS extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        LocalDate date = expTf.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         if(e.getSource()==addButton) {
 
-            rows[0] = mnTf.getSelectedItem();
-            rows[1] = cnTf.getText();
-            rows[2] = date;
-            rows[3] = stockTf.getValue();
-            rows[4] = priceTf.getValue();
+            if (expTf.getDate() == null ) {
+                ErrorM errorM = new ErrorM();
+                errorM.displayError("You must input the expired date");
+            } else if (Objects.equals(cnTf.getText(), "")) {
+                ErrorM errorM = new ErrorM();
+                errorM.displayError("You must input your company name");
+            } else if (Objects.equals(priceTf.getValue(), 0.0)) {
+                ErrorM errorM = new ErrorM();
+                errorM.displayError("You must input the price of medicine");
+            } else {
+                LocalDate date = expTf.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                rows[0] = mnTf.getSelectedItem();
+                rows[1] = cnTf.getText();
+                rows[2] = date;
+                rows[3] = stockTf.getValue();
+                rows[4] = priceTf.getValue();
 
-            model.addRow(rows);
+                model.addRow(rows);
+            }
 
         }
         else if(e.getSource()==clearButton){
@@ -218,12 +231,24 @@ public class PMS extends JFrame implements ActionListener {
         else if(e.getSource()==updateButton){
 
             int numberOfROW = table.getSelectedRow();
+            LocalDate date = expTf.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            model.setValueAt(mnTf.getSelectedItem(),numberOfROW,0);
-            model.setValueAt(cnTf.getText(),numberOfROW,1);
-            model.setValueAt(date,numberOfROW,2);
-            model.setValueAt(stockTf.getValue(),numberOfROW,3);
-            model.setValueAt(priceTf.getValue(),numberOfROW,4);
+            if (expTf.getDate() == null ) {
+                ErrorM errorM = new ErrorM();
+                errorM.displayError("You must input the expired date");
+            } else if (Objects.equals(cnTf.getText(), "")) {
+                ErrorM errorM = new ErrorM();
+                errorM.displayError("You must input your company name");
+            } else if (Objects.equals(priceTf.getValue(), 0.0)) {
+                ErrorM errorM = new ErrorM();
+                errorM.displayError("You must input the price of medicine");
+            } else {
+                model.setValueAt(mnTf.getSelectedItem(),numberOfROW,0);
+                model.setValueAt(cnTf.getText(),numberOfROW,1);
+                model.setValueAt(date,numberOfROW,2);
+                model.setValueAt(stockTf.getValue(),numberOfROW,3);
+                model.setValueAt(priceTf.getValue(),numberOfROW,4);
+            }
 
         }
 
