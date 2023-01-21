@@ -1,5 +1,7 @@
 package pharmecy.ms;
 
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Container;
@@ -10,13 +12,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class PMS extends JFrame implements ActionListener {
 
     private Container c;
     private JLabel titleLable,mnLabel,cnLabel,expLabel,stockLable,priceLabel;
     protected JComboBox<String> mnTf;
-    private JTextField cnTf,expTf;
+    private JTextField cnTf;
+    protected JDateChooser expTf;
     protected JSpinner priceTf;
     protected JSpinner stockTf;
     private JButton addButton,updateButton,deleteButton,clearButton;
@@ -79,7 +86,7 @@ public class PMS extends JFrame implements ActionListener {
         expLabel.setBounds(10,180,150,30);
         c.add(expLabel);
 
-        expTf = new JTextField();
+        expTf = new JDateChooser();
         expTf.setFont(font);
         expTf.setBounds(180,180,200,30);
         c.add(expTf);
@@ -159,9 +166,11 @@ public class PMS extends JFrame implements ActionListener {
 
                 int numberOfROW  = table.getSelectedRow();
 
+                LocalDate localDate = (LocalDate) model.getValueAt(numberOfROW, 2);
+                Instant instant = localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
                 mnTf.setSelectedItem(model.getValueAt(numberOfROW, 0).toString());
                 cnTf.setText(model.getValueAt(numberOfROW, 1).toString());
-                expTf.setText(model.getValueAt(numberOfROW, 2).toString());
+                expTf.setDate(Date.from(instant));
                 stockTf.setValue(model.getValueAt(numberOfROW, 3));
                 priceTf.setValue(model.getValueAt(numberOfROW, 4));
 
@@ -173,11 +182,12 @@ public class PMS extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        LocalDate date = expTf.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         if(e.getSource()==addButton) {
 
             rows[0] = mnTf.getSelectedItem();
             rows[1] = cnTf.getText();
-            rows[2] = expTf.getText();
+            rows[2] = date;
             rows[3] = stockTf.getValue();
             rows[4] = priceTf.getValue();
 
@@ -188,7 +198,7 @@ public class PMS extends JFrame implements ActionListener {
 
             mnTf.setSelectedItem("");
             cnTf.setText("");
-            expTf.setText("");
+            expTf.setDate(new Date());
             stockTf.setValue(0);
             priceTf.setValue(0);
 
@@ -209,12 +219,9 @@ public class PMS extends JFrame implements ActionListener {
 
             int numberOfROW = table.getSelectedRow();
 
-            String c_name = cnTf.getText();
-            String exp = expTf.getText();
-
             model.setValueAt(mnTf.getSelectedItem(),numberOfROW,0);
-            model.setValueAt(c_name,numberOfROW,1);
-            model.setValueAt(exp,numberOfROW,2);
+            model.setValueAt(cnTf.getText(),numberOfROW,1);
+            model.setValueAt(date,numberOfROW,2);
             model.setValueAt(stockTf.getValue(),numberOfROW,3);
             model.setValueAt(priceTf.getValue(),numberOfROW,4);
 
