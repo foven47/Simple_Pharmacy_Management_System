@@ -55,11 +55,12 @@ public class PMS extends JFrame implements ActionListener {
 
         Font font = new Font("Arial",Font.BOLD,16);
         Font font1 = new Font("Lato", Font.PLAIN, 16);
+        Font font2 = new Font("Arial",Font.BOLD,20);
         Font numberFont = new Font("Digit-only", Font.PLAIN, 16);
 
         titleLable = new JLabel("MEDICINE DETAILS");
-        titleLable.setFont(font);
-        titleLable.setBounds(310,10,250,50);
+        titleLable.setFont(font2);
+        titleLable.setBounds(290,10,250,50);
         c.add(titleLable);
 
         mnLabel = new JLabel("Medicine Name");
@@ -210,8 +211,8 @@ public class PMS extends JFrame implements ActionListener {
         this.setVisible(true);
 
         // Create a button to open frame2
-        JButton buttonChartFrame = new JButton("Open Bar Chart");
-        buttonChartFrame.setBounds(10,10,120,35);
+        JButton buttonChartFrame = new JButton("Bar Chart");
+        buttonChartFrame.setBounds(10,320,120,35);
         buttonChartFrame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openFrame2();
