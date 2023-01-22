@@ -363,21 +363,91 @@ public class PMS extends JFrame implements ActionListener {
 
     }
     private void openFrame2() {
-        // Initialize frame2
-        JFrame frame2 = new JFrame();
+        JFrame frame2 = new JFrame("Page2.png");
         frame2.setTitle("frame2");
-        frame2.setSize(680, 590);
+
         frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame2.setVisible(true);
         frame2.setLayout(null);
         frame2.setBackground(Color.white);
+        frame2.setResizable(false); //prevent resize frame
 
-        for (int i = 0, boundValX = 20; i < barTotal; i++, boundValX += 70) {
-            JPanel newPanel = new JPanel();
-            newPanel.setBackground(Color.WHITE);
-            int boundValY = medStock.get(i) * 10;
-            newPanel.setBounds(boundValX, 20, 50, boundValY);
-            frame2.add(newPanel);
+        JPanel container = new JPanel();
+        container.setBackground(new Color(0xF1F6F9));
+        container.setLayout(null);
+
+        frame2.add(container);
+
+        int maxBarHeight = medStock.get(0) * 10*5;
+        for(int i=0; i<barTotal; i++) {
+            if (medStock.get(i) * 10*5 > maxBarHeight) {
+                maxBarHeight = medStock.get(i) * 10*5;
+            }
         }
+
+        for (int i = 0, boundValX = 70; i < barTotal; i++, boundValX += 100) {
+            int boundValY = medStock.get(i) * 10*5;
+
+
+            JPanel newPanel = new JPanel();
+            newPanel.setBackground(new Color(168,220-(30*i),220));
+            newPanel.setBounds(boundValX, 80+maxBarHeight-boundValY, 80, boundValY);
+
+
+            JLabel medLabel = new JLabel();
+            medLabel.setText(medName.get(i)); //set label text
+            medLabel.setBounds(boundValX,maxBarHeight-20,250,250); //set frame x,y and dimension
+            medLabel.setFont(new Font("Roboto",Font.PLAIN,13));
+            medLabel.setForeground(Color.darkGray); //change text color
+
+            container.add(medLabel);
+            container.add(newPanel);
+
+
+        }
+
+        //grid maker
+        for(int i=0; i<(maxBarHeight)/50; i++){
+            JPanel grid = new JPanel();
+            grid.setBorder(BorderFactory.createLineBorder(new Color(0xadb5bd), 1));
+            grid.setBackground(new Color(0,0,0,0));
+            grid.setLayout(null);
+            grid.setBounds(0,(50*i)+80,(barTotal*100)+70,10*5);//(50*i)+80
+            container.add(grid);
+
+
+            JLabel valInd = new JLabel();
+            valInd.setText(String.valueOf(-i+(maxBarHeight/50)));
+            valInd.setLayout(null);
+            valInd.setBounds(10,(50*i)+60,20,20);
+            valInd.setForeground(Color.darkGray);
+
+            JLabel val0 = new JLabel();
+            val0.setText(String.valueOf(0));
+            val0.setLayout(null);
+            val0.setBounds(10,maxBarHeight+60,10,10);
+            val0.setForeground(Color.darkGray);
+
+            container.add(valInd);
+            container.add(val0);
+        }
+
+
+
+
+        container.setBounds(0,0,(barTotal*100)+70,145+maxBarHeight);
+        if(barTotal<=1){
+            frame2.setSize(180, 180+maxBarHeight);
+        }
+        if(barTotal>1){
+            frame2.setSize((barTotal*100)+80, 180+maxBarHeight);
+        }
+
+
+
+
+
+
+
     }
 }
