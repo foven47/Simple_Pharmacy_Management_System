@@ -51,7 +51,7 @@ public class PMS extends JFrame implements ActionListener {
 
         c = this.getContentPane();
         c.setLayout(null);
-        c.setBackground(Color.PINK);
+        c.setBackground(new java.awt.Color(242, 249, 241));
 
         Font font = new Font("Arial",Font.BOLD,16);
         Font font1 = new Font("Lato", Font.PLAIN, 16);
@@ -139,30 +139,38 @@ public class PMS extends JFrame implements ActionListener {
         c.add(priceTf);
 
 
-        aimg = new ImageIcon(getClass().getResource("addimg.png"));
-        uimg = new ImageIcon(getClass().getResource("updateimg.png"));
-        dimg = new ImageIcon(getClass().getResource("deleteimg.png"));
-        cimg = new ImageIcon(getClass().getResource("clearimg.png"));
+        aimg = new ImageIcon(getClass().getResource("Asset 6.png"));
+        uimg = new ImageIcon(getClass().getResource("Asset 7.png"));
+        cimg = new ImageIcon(getClass().getResource("Asset 8.png"));
+        dimg = new ImageIcon(getClass().getResource("Asset 9.png"));
 
         addButton = new JButton(aimg);
         addButton.setFont(font);
         addButton.setBounds(50,260,120,35);
+        addButton.setContentAreaFilled(false);
+        addButton.setBorderPainted(false);
         c.add(addButton);
 
         updateButton = new JButton(uimg);
         updateButton.setFont(font);
         updateButton.setBounds(225,260,120,35);
+        updateButton.setContentAreaFilled(false);
+        updateButton.setBorderPainted(false);
         c.add(updateButton);
-
-        deleteButton = new JButton(dimg);
-        deleteButton.setFont(font);
-        deleteButton.setBounds(400,260,120,35);
-        c.add(deleteButton);
 
         clearButton = new JButton(cimg);
         clearButton.setFont(font);
-        clearButton.setBounds(575,260,120,35);
+        clearButton.setBounds(400,260,120,35);
+        clearButton.setContentAreaFilled(false);
+        clearButton.setBorderPainted(false);
         c.add(clearButton);
+
+        deleteButton = new JButton(dimg);
+        deleteButton.setFont(font);
+        deleteButton.setBounds(575,260,120,35);
+        deleteButton.setContentAreaFilled(false);
+        deleteButton.setBorderPainted(false);
+        c.add(deleteButton);
 
         table = new JTable();
 
