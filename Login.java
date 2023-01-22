@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login implements ActionListener {
-
     JFrame frame = new JFrame();
     JButton myButton = new JButton("Login");
     JTextField pharmacyIdTf = new JTextField();
