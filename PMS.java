@@ -4,9 +4,7 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.*;
 import java.text.NumberFormat;
 import java.time.Instant;
@@ -211,8 +209,15 @@ public class PMS extends JFrame implements ActionListener {
         this.setVisible(true);
 
         // Create a button to open frame2
-        JButton buttonChartFrame = new JButton("Bar Chart");
+        ImageIcon bcimg = new ImageIcon("chartimg.jpg");
+        JButton buttonChartFrame = new JButton(bcimg);
+        buttonChartFrame.setFont(font);
         buttonChartFrame.setBounds(10,320,120,35);
+        buttonChartFrame.setContentAreaFilled(false);
+        buttonChartFrame.setBorderPainted(false);
+        c.add(buttonChartFrame);
+
+
         buttonChartFrame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openFrame2();
